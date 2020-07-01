@@ -1,0 +1,22 @@
+<app-header (toggleSideBarForMe)="sideBarToggle($event)"></app-header>
+
+<mat-drawer-container>
+
+  <mat-drawer [mode]="screenWidth > 840 ? 'side' : 'over'" [opened] = "sideBarOpen">
+    <app-sidebar></app-sidebar>
+  </mat-drawer>
+
+  <mat-drawer-content>
+    <mat-expansion-panel hideToggle>
+      <mat-expansion-panel-header style="background-color: #00aaff; display: flex; padding-top: 15px;">
+          <mat-icon>keyboard_arrow_down</mat-icon>
+      </mat-expansion-panel-header>
+      <app-section></app-section>
+    </mat-expansion-panel>
+
+    <router-outlet></router-outlet>
+  </mat-drawer-content>
+
+</mat-drawer-container>
+
+<app-footer></app-footer>
