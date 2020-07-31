@@ -11,7 +11,7 @@ export class LoadingComponent implements OnInit {
   constructor(router: Router) {
     setTimeout(() => {
         if (String(true) === localStorage.getItem('isOpenHome')) {
-          window.open('https://cloud-provider-selector-ui.azurewebsites.net/', '_blank');
+          window.open('https://cloud-provider-selector.azureedge.net', '_blank');
           router.navigate(['/dashboard/home']).then(r => console.log('open home page'));
         } else {
           router.navigate(['/login']);

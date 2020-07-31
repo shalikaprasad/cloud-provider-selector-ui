@@ -33,14 +33,14 @@ import {MsAdalAngular6Module} from 'microsoft-adal-angular6';
     RegistrationModule,
     MsAdalAngular6Module.forRoot({
       tenant: 'b97ce255-751a-421e-91a8-2cd45e95da5e',
-      clientId: '19c1a0a4-ff52-4d8f-9064-811ddb9e5310',
+      clientId: '9f7b4077-98b6-4388-9e75-cbc840f4d2d9',
       redirectUri: 'https://cloud-provider-selector-ui.azurewebsites.net/dashboard/home',
       endpoints: {
-        'api application url': 'https://login.microsoftonline.com/b97ce255-751a-421e-91a8-2cd45e95da5e/oauth2/v2.0/authorize', // this is for feteching the access token
+        'api application url': 'https://login.microsoftonline.com/b97ce255-751a-421e-91a8-2cd45e95da5e/oauth2/token',
       },
       navigateToLoginRequestUrl: false,
-      cacheLocation: 'assets/sessionStorage>',
-      postLogoutRedirectUri: 'https://cloud-provider-selector-ui.azurewebsites.net/',
+      cacheLocation: 'assets/sessionStorage',
+      postLogoutRedirectUri: 'https://cloud-provider-selector-ui.azurewebsites.net',
     }),
   ],
   providers: [AlertService, NewsService, AuthenticationService, UserService],
