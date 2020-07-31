@@ -6,13 +6,17 @@ import {SharedModule} from '../../shared/shared.module';
 import {VendorsModule} from '../../vendors/vendors.module';
 import {AppRoutingModule} from '../../app-routing.module';
 import {NewsComponent} from '../../modules/dashboard/news/news.component';
+import {NewsEditorComponent} from '../../modules/admin/news-editor/news-editor.component';
+import {NewsTableComponent} from '../../modules/admin/news-table/news-table.component';
 
 
 @NgModule({
   declarations: [
     DefaultComponent,
     HomeComponent,
-    NewsComponent
+    NewsComponent,
+    NewsEditorComponent,
+    NewsTableComponent
   ],
   imports: [
     CommonModule,

@@ -6,13 +6,25 @@ import {HttpClient} from '@angular/common/http';
 })
 export class FileService {
 
-  private pathUrl = 'http://localhost:8080/images/';
-
+  private pathUrl = 'https://cloudproviderstorage.blob.core.windows.net/assets/';
+  // private azureFunctionUrl = 'https://upload-image-function.azurewebsites.net/api/HttpTriggerJava';
+  private localFunctionUrl = 'https://cloud-provider-selector-azure-function.azurewebsites.net/api/upload-image/';
   constructor(
     private http: HttpClient
-  ) {}
+  ) {
+  }
 
   getImageBasePath() {
     return this.pathUrl;
+  }
+
+  uploadImage(fileData) {
+    return this.http.post(this.localFunctionUrl , fileData);
+  }
+
+  getImage(id) {
+    const data: FormData = new FormData();
+    data.append('imageId', id);
+    return this.http.post(this.localFunctionUrl , data);
   }
 }

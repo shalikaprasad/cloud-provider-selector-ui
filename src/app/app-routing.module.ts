@@ -9,6 +9,8 @@ import {AdvancedEstimateComponent} from './modules/dashboard/advanced-estimate/a
 import {ModelStatusComponent} from './modules/dashboard/model-status/model-status.component';
 import {GroupChattingComponent} from './modules/dashboard/group-chatting/group-chatting.component';
 import {HelpComponent} from './modules/dashboard/help/help.component';
+import {NewsEditorComponent} from './modules/admin/news-editor/news-editor.component';
+import {NewsTableComponent} from './modules/admin/news-table/news-table.component';
 
 
 const routes: Routes = [
@@ -48,6 +50,14 @@ const routes: Routes = [
       {
         path: 'help',
         component: HelpComponent
+      },
+      {
+        path: 'news-editor',
+        component: NewsEditorComponent
+      },
+      {
+        path: 'news-table',
+        component: NewsTableComponent
       }
     ]
   }

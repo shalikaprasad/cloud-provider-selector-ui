@@ -13,10 +13,12 @@ export class NewsComponent implements OnInit {
 
   public newsList: News[];
   public baseImagePath: any;
+  public image: string;
 
   constructor(private route: ActivatedRoute,
               private router: Router,
               private newsListService: NewsService,
+              private fileService: FileService,
               private pathService: FileService
   ) {
     this.baseImagePath = pathService.getImageBasePath() + 'news';
@@ -29,6 +31,13 @@ export class NewsComponent implements OnInit {
   reloadData() {
     this.newsListService.getNewsList(5).subscribe((res) => {
       this.newsList = res['body'];
+      this.getImage(1);
+    });
+  }
+
+  getImage(imageId) {
+    this.fileService.getImage(imageId).subscribe((res) => {
+      this.image = res['body'];
     });
   }
 

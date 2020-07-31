@@ -19,6 +19,8 @@ import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {MDBBootstrapModule} from 'angular-bootstrap-md';
 import {TreeViewModule} from '@syncfusion/ej2-angular-navigations';
 import {MatExpansionModule} from '@angular/material/expansion';
+import {AlifeFileToBase64Module} from 'alife-file-to-base64';
+
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -55,7 +57,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatPaginatorModule,
     MatTableModule,
     HighchartsChartModule,
-    MatExpansionModule
+    MatExpansionModule,
+    AlifeFileToBase64Module
   ],
   exports: [
     CommonModule,
@@ -78,7 +81,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatPaginatorModule,
     MatTableModule,
     HighchartsChartModule,
-    MatExpansionModule
+    MatExpansionModule,
+    AlifeFileToBase64Module
   ]
 })
 export class VendorsModule { }
