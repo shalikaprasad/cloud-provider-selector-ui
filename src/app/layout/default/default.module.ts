@@ -8,6 +8,12 @@ import {AppRoutingModule} from '../../app-routing.module';
 import {NewsComponent} from '../../modules/dashboard/news/news.component';
 import {NewsEditorComponent} from '../../modules/admin/news-editor/news-editor.component';
 import {NewsTableComponent} from '../../modules/admin/news-table/news-table.component';
+import {AppComponent} from '../../app.component';
+import {QuickEstimateComponent} from '../../modules/dashboard/quick-estimate/quick-estimate.component';
+import {AdvancedEstimateComponent} from '../../modules/dashboard/advanced-estimate/advanced-estimate.component';
+import {ModelStatusComponent} from '../../modules/dashboard/model-status/model-status.component';
+import {GroupChattingComponent} from '../../modules/dashboard/group-chatting/group-chatting.component';
+import {HelpComponent} from '../../modules/dashboard/help/help.component';
 
 
 @NgModule({
@@ -16,7 +22,12 @@ import {NewsTableComponent} from '../../modules/admin/news-table/news-table.comp
     HomeComponent,
     NewsComponent,
     NewsEditorComponent,
-    NewsTableComponent
+    NewsTableComponent,
+    QuickEstimateComponent,
+    AdvancedEstimateComponent,
+    ModelStatusComponent,
+    GroupChattingComponent,
+    HelpComponent
   ],
   imports: [
     CommonModule,

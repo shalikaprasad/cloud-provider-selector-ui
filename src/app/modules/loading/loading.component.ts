@@ -10,8 +10,12 @@ export class LoadingComponent implements OnInit {
 
   constructor(router: Router) {
     setTimeout(() => {
-      window.open('http://localhost:4200/', '_blank');
-      router.navigate(['/dashboard/home']).then(r => console.log('open home page'));
+        if (String(true) === localStorage.getItem('isOpenHome')) {
+          window.open('https://cloud-provider-selector-ui.azurewebsites.net/', '_blank');
+          router.navigate(['/dashboard/home']).then(r => console.log('open home page'));
+        } else {
+          router.navigate(['/login']);
+        }
       },
       3000);
   }

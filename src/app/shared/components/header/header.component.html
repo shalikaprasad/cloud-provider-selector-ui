@@ -27,6 +27,17 @@
           </div>
         </form>
 
+        <li class="nav-item dropdown" dropdown>
+          <a dropdownToggle type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
+            <img src="assets/images/logo.png" class="rounded-circle z-depth-0"
+                 alt="avatar image" style="width: 25px">
+          </a>
+          <div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown-default" role="menu">
+            <a class="dropdown-item" routerLink="/dashboard/profile" [class.disabled]="lock">Profile <i class="fa fa-lock" style="padding-left: 5px" aria-hidden="true" [hidden]="!lock"></i></a>
+            <a class="dropdown-item" (click)="logout()">Logout</a>
+          </div>
+        </li>
+
       </ul>
 
 

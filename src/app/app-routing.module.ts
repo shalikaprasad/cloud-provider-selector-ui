@@ -11,12 +11,22 @@ import {GroupChattingComponent} from './modules/dashboard/group-chatting/group-c
 import {HelpComponent} from './modules/dashboard/help/help.component';
 import {NewsEditorComponent} from './modules/admin/news-editor/news-editor.component';
 import {NewsTableComponent} from './modules/admin/news-table/news-table.component';
+import {LoginComponent} from './modules/admin/login/login.component';
+import {SignupComponent} from './modules/admin/signup/signup.component';
 
 
 const routes: Routes = [
   {
     path: '',
     component: LoadingComponent
+  },
+  {
+    path: 'login',
+    component: LoginComponent
+  },
+  {
+    path: 'register',
+    component: SignupComponent
   },
   {
     path: 'dashboard',
