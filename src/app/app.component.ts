@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {MonitoringService} from './services/monitoring.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'cloud-provider-selector-ui';
+  constructor(private monitoringService: MonitoringService) {
+    this.monitoringService.logPageView('App', '/');
+  }
 }

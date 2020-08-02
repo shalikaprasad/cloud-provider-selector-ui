@@ -6,6 +6,7 @@ import {AlertService} from '../../../services/alert.service';
 import {first} from 'rxjs/operators';
 import {AuthenticationService} from '../../../services/authentication.service';
 import {UserService} from '../../../services/user.service';
+import {MonitoringService} from '../../../services/monitoring.service';
 
 @Component({
   selector: 'app-login',
@@ -26,8 +27,10 @@ export class LoginComponent implements OnInit {
     private authenticationService: AuthenticationService,
     private alertService: AlertService,
     private userService: UserService,
+    private monitoringService: MonitoringService
   ) {
     if (this.authenticationService.isUserLoggedIn()) {
+      this.monitoringService.logPageView('LoginPage', '/login');
       this.router.navigate(['/dashboard/home']);
     }
   }
@@ -47,8 +50,8 @@ export class LoginComponent implements OnInit {
 
     // this.user.userName = this.f.loginFormUserName.value;
     // this.user.password = this.f.loginFormPassword.value;
-
+    this.monitoringService.logEvent('user', {user: this.user});
     this.authenticationService.login(this.user);
-
+    // this.router.navigate(['/dashboard/home']).then(r => console.log('open home page'));
   }
 }

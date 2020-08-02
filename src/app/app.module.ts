@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {ErrorHandler, NgModule} from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -7,19 +7,12 @@ import {AlertService} from './services/alert.service';
 import {NewsService} from './services/news.service';
 import {DefaultModule} from './layout/default/default.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {LoadingComponent} from './modules/loading/loading.component';
-import { QuickEstimateComponent } from './modules/dashboard/quick-estimate/quick-estimate.component';
-import { AdvancedEstimateComponent } from './modules/dashboard/advanced-estimate/advanced-estimate.component';
-import { ModelStatusComponent } from './modules/dashboard/model-status/model-status.component';
-import { GroupChattingComponent } from './modules/dashboard/group-chatting/group-chatting.component';
-import { HelpComponent } from './modules/dashboard/help/help.component';
-import { RegistrationComponent } from './layout/registration/registration.component';
-import { LoginComponent } from './modules/admin/login/login.component';
-import { SignupComponent } from './modules/admin/signup/signup.component';
 import {RegistrationModule} from './layout/registration/registration.module';
 import {AuthenticationService} from './services/authentication.service';
 import {UserService} from './services/user.service';
 import {MsAdalAngular6Module} from 'microsoft-adal-angular6';
+import {MonitoringService} from './services/monitoring.service';
+import {ErrorHandlerService} from './services/error-handler.service';
 
 @NgModule({
   declarations: [
@@ -43,7 +36,14 @@ import {MsAdalAngular6Module} from 'microsoft-adal-angular6';
       postLogoutRedirectUri: 'https://cloud-provider-selector-ui.azurewebsites.net',
     }),
   ],
-  providers: [AlertService, NewsService, AuthenticationService, UserService],
+  providers: [
+    AlertService,
+    NewsService,
+    AuthenticationService,
+    UserService,
+    MonitoringService,
+    { provide: ErrorHandler, useClass: ErrorHandlerService }
+   ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

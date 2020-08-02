@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import {ErrorHandler, NgModule} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {VendorsModule} from '../../vendors/vendors.module';
 import {RegistrationComponent} from './registration.component';
@@ -9,6 +9,8 @@ import {SignupComponent} from '../../modules/admin/signup/signup.component';
 import {UserService} from '../../services/user.service';
 import {AuthenticationService} from '../../services/authentication.service';
 import {LoadingComponent} from '../../modules/loading/loading.component';
+import {MonitoringService} from '../../services/monitoring.service';
+import {ErrorHandlerService} from '../../services/error-handler.service';
 
 
 
@@ -27,7 +29,9 @@ import {LoadingComponent} from '../../modules/loading/loading.component';
   providers: [
     AuthenticationService,
     UserService,
-    NewsService
+    NewsService,
+    MonitoringService,
+    { provide: ErrorHandler, useClass: ErrorHandlerService }
   ]
 })
 export class RegistrationModule { }

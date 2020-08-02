@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
+import {MonitoringService} from '../../services/monitoring.service';
 
 @Component({
   selector: 'app-loading',
@@ -8,10 +9,13 @@ import {Router} from '@angular/router';
 })
 export class LoadingComponent implements OnInit {
 
-  constructor(router: Router) {
+  constructor(
+    router: Router,
+    monitoringService: MonitoringService
+  ) {
+    monitoringService.logPageView('loading', '/');
     setTimeout(() => {
         if (String(true) === localStorage.getItem('isOpenHome')) {
-          window.open('https://cloud-provider-selector.azureedge.net', '_blank');
           router.navigate(['/dashboard/home']).then(r => console.log('open home page'));
         } else {
           router.navigate(['/login']);
