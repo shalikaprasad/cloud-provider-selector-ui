@@ -7,7 +7,7 @@ import {AuthenticationService} from './authentication.service';
 })
 export class UserService {
 
-  private baseUrl = 'http://localhost:8082/api/user';
+  private baseUrl = 'https://cloud-provider-selector-backend.azurewebsites.net/api/user';
   private fd: any;
 
   constructor(private http: HttpClient,

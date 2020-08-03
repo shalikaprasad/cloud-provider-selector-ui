@@ -24,7 +24,7 @@ import {ErrorHandlerService} from '../../services/error-handler.service';
   imports: [
     CommonModule,
     RouterModule,
-    VendorsModule
+    VendorsModule,
   ],
   providers: [
     AuthenticationService,

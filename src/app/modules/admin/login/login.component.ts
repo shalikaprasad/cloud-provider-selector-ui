@@ -29,10 +29,11 @@ export class LoginComponent implements OnInit {
     private userService: UserService,
     private monitoringService: MonitoringService
   ) {
-    if (this.authenticationService.isUserLoggedIn()) {
-      this.monitoringService.logPageView('LoginPage', '/login');
-      this.router.navigate(['/dashboard/home']);
-    }
+    // if (this.authenticationService.isUserLoggedIn()) {
+    //   this.monitoringService.logPageView('LoginPage', '/login');
+    //   this.router.navigate(['/dashboard/home']);
+    // }
+    this.monitoringService.logPageView('LoginPage', '/login');
   }
 
   ngOnInit(): void {
@@ -51,7 +52,8 @@ export class LoginComponent implements OnInit {
     // this.user.userName = this.f.loginFormUserName.value;
     // this.user.password = this.f.loginFormPassword.value;
     this.monitoringService.logEvent('user', {user: this.user});
-    this.authenticationService.login(this.user);
+    // this.authenticationService.login(this.user);
     // this.router.navigate(['/dashboard/home']).then(r => console.log('open home page'));
+    this.router.navigate(['/dashboard/home']);
   }
 }

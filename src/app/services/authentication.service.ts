@@ -9,7 +9,7 @@ export class AuthenticationService {
 
   // private currentUserSubject: BehaviorSubject<User>;
   // public currentUser: Observable<User>;
-  private baseUrl = 'http://localhost:8081/oauth';
+  private baseUrl = 'https://cloud-provider-selector-backend.azurewebsites.net/oauth';
 
   constructor(
     private http: HttpClient,

@@ -13,6 +13,9 @@ import {UserService} from './services/user.service';
 import {MsAdalAngular6Module} from 'microsoft-adal-angular6';
 import {MonitoringService} from './services/monitoring.service';
 import {ErrorHandlerService} from './services/error-handler.service';
+import { MsalModule, MsalInterceptor } from '@azure/msal-angular';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+const isIE = window.navigator.userAgent.indexOf('MSIE ') > -1 || window.navigator.userAgent.indexOf('Trident/') > -1;
 
 @NgModule({
   declarations: [
@@ -24,17 +27,31 @@ import {ErrorHandlerService} from './services/error-handler.service';
     DefaultModule,
     BrowserAnimationsModule,
     RegistrationModule,
-    MsAdalAngular6Module.forRoot({
-      tenant: 'b97ce255-751a-421e-91a8-2cd45e95da5e',
-      clientId: '9f7b4077-98b6-4388-9e75-cbc840f4d2d9',
-      redirectUri: 'https://cloud-provider-selector-ui.azurewebsites.net/dashboard/home',
-      endpoints: {
-        'api application url': 'https://login.microsoftonline.com/b97ce255-751a-421e-91a8-2cd45e95da5e/oauth2/token',
+    HttpClientModule,
+    MsalModule.forRoot({
+        auth: {
+          clientId: '5c9b1a21-17fc-4ad6-b9c5-61d28036ac65',
+          authority: 'https://login.microsoftonline.com/common',
+          redirectUri: 'https://cloud-provider-selector-ui.azurewebsites.net/dashboard/home/',
+        },
+        cache: {
+          cacheLocation: 'localStorage',
+          storeAuthStateInCookie: isIE, // set to true for IE 11
+        },
       },
-      navigateToLoginRequestUrl: false,
-      cacheLocation: 'assets/sessionStorage',
-      postLogoutRedirectUri: 'https://cloud-provider-selector-ui.azurewebsites.net',
-    }),
+      {
+        popUp: !isIE,
+        consentScopes: [
+          'user.read',
+          'openid',
+          'profile',
+        ],
+        unprotectedResources: [],
+        protectedResourceMap: [
+          ['https://graph.microsoft.com/v1.0/me', ['user.read']]
+        ],
+        extraQueryParameters: {}
+      })
   ],
   providers: [
     AlertService,
@@ -42,7 +59,12 @@ import {ErrorHandlerService} from './services/error-handler.service';
     AuthenticationService,
     UserService,
     MonitoringService,
-    { provide: ErrorHandler, useClass: ErrorHandlerService }
+    { provide: ErrorHandler, useClass: ErrorHandlerService },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: MsalInterceptor,
+      multi: true
+    }
    ],
   bootstrap: [AppComponent]
 })
