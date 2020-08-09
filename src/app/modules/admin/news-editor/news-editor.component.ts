@@ -123,7 +123,6 @@ export class NewsEditorComponent implements OnInit {
     this.news.month = this.f.month.value;
     this.news.date = this.f.date.value;
     this.news.isActive = this.f.isActive.value;
-    this.news.fileData = this.fileData;
     this.isAgree = this.f.isAgree.value;
 
     this.fileService.uploadImage(this.imageFile)

@@ -21,7 +21,7 @@ export class NewsComponent implements OnInit {
               private fileService: FileService,
               private pathService: FileService
   ) {
-    this.baseImagePath = pathService.getImageBasePath() + 'news';
+    this.baseImagePath = pathService.getImageBasePath();
   }
 
   ngOnInit() {
@@ -31,7 +31,6 @@ export class NewsComponent implements OnInit {
   reloadData() {
     this.newsListService.getNewsList(5).subscribe((res) => {
       this.newsList = res['body'];
-      this.getImage(1);
     });
   }
 

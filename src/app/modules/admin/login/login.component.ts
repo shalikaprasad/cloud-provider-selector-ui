@@ -1,11 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {User} from '../../../shared/models/User';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {FormBuilder} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {AlertService} from '../../../services/alert.service';
-import {first} from 'rxjs/operators';
-import {AuthenticationService} from '../../../services/authentication.service';
-import {UserService} from '../../../services/user.service';
 import {MonitoringService} from '../../../services/monitoring.service';
 
 @Component({
@@ -15,7 +12,6 @@ import {MonitoringService} from '../../../services/monitoring.service';
 })
 export class LoginComponent implements OnInit {
 
-  loginForm: FormGroup;
   loading = false;
   submitted = false;
   user: User = new User();
@@ -24,9 +20,7 @@ export class LoginComponent implements OnInit {
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
-    private authenticationService: AuthenticationService,
     private alertService: AlertService,
-    private userService: UserService,
     private monitoringService: MonitoringService
   ) {
     // if (this.authenticationService.isUserLoggedIn()) {

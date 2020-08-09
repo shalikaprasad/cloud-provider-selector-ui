@@ -29,9 +29,7 @@ export class HeaderComponent implements OnInit {
 
   constructor(
     private authService: MsalService,
-    private authenticationService: AuthenticationService,
     private router: Router,
-    private userService: UserService,
     private http: HttpClient
     ) {}
 
@@ -41,7 +39,7 @@ export class HeaderComponent implements OnInit {
     this.userlogName = this.currentUser?.displayName;
     localStorage.setItem('currentUserName', JSON.stringify(this.userlogName));
     localStorage.setItem('currentUser', JSON.stringify(this.currentUser));
-    if (this.authenticationService.isUserLoggedIn()) {
+    if (this.authService.getAccount() != null) {
       this.isLoggedUser = true;
     }
     if (this.currentUser === 'Prasad') {
@@ -59,7 +57,7 @@ export class HeaderComponent implements OnInit {
   }
 
   logout() {
-    this.authenticationService.logOut();
+    this.authService.logout();
     localStorage.setItem('isOpenDashboard', String(false));
     localStorage.setItem('isOpenHome', String(false));
     this.router.navigate(['/login']);

@@ -20,6 +20,8 @@ import {MDBBootstrapModule} from 'angular-bootstrap-md';
 import {TreeViewModule} from '@syncfusion/ej2-angular-navigations';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {AlifeFileToBase64Module} from 'alife-file-to-base64';
+import { MsalModule } from '@azure/msal-angular';
+const isIE = window.navigator.userAgent.indexOf('MSIE ') > -1 || window.navigator.userAgent.indexOf('Trident/') > -1;
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -29,6 +31,7 @@ export function HttpLoaderFactory(http: HttpClient) {
 @NgModule({
   declarations: [],
   imports: [
+    HttpClientModule,
     CommonModule,
     MatButtonModule,
     ReactiveFormsModule,
@@ -58,9 +61,34 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatTableModule,
     HighchartsChartModule,
     MatExpansionModule,
-    AlifeFileToBase64Module
+    AlifeFileToBase64Module,
+    MsalModule.forRoot({
+        auth: {
+          clientId: '5c9b1a21-17fc-4ad6-b9c5-61d28036ac65',
+          authority: 'https://login.microsoftonline.com/common',
+          redirectUri: 'https://cloud-provider-selector.azurefd.net/dashboard/home/',
+        },
+        cache: {
+          cacheLocation: 'localStorage',
+          storeAuthStateInCookie: isIE, // set to true for IE 11
+        },
+      },
+      {
+        popUp: !isIE,
+        consentScopes: [
+          'user.read',
+          'openid',
+          'profile',
+        ],
+        unprotectedResources: [],
+        protectedResourceMap: [
+          ['https://graph.microsoft.com/v1.0/me', ['user.read']]
+        ],
+        extraQueryParameters: {}
+      })
   ],
   exports: [
+    HttpClientModule,
     CommonModule,
     MatButtonModule,
     ReactiveFormsModule,
@@ -82,7 +110,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatTableModule,
     HighchartsChartModule,
     MatExpansionModule,
-    AlifeFileToBase64Module
+    AlifeFileToBase64Module,
+    MsalModule
   ]
 })
 export class VendorsModule { }

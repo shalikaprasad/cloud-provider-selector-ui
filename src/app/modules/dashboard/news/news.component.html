@@ -24,7 +24,7 @@
         <div *ngIf="i < 4">
           <!-- Image -->
           <div class="view overlay rounded z-depth-1-half mb-4">
-            <img class="img-fluid" src="{{baseImagePath}}/{{news.imageFileName}}" width="100%" height="100%" alt="Sample image">
+            <img class="img-fluid" src="{{baseImagePath}}{{news.pictureId}}.png" width="100%" height="100%" alt="Sample image">
             <a>
               <div class="mask rgba-white-slight waves-light" mdbWavesEffect></div>
             </a>
@@ -67,7 +67,7 @@
 
             <!--Image-->
             <div class="view overlay rounded z-depth-1 mb-4">
-              <img class="img-fluid" src="{{baseImagePath}}/{{news.imageFileName}}" alt="Sample image">
+              <img class="img-fluid" src="{{baseImagePath}}{{news.pictureId}}.png" alt="Sample image">
               <a>
                 <div class="mask rgba-white-slight waves-light" mdbWavesEffect></div>
               </a>

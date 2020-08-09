@@ -52,17 +52,17 @@ export class SignupComponent implements OnInit {
     this.user.email = this.registerForm.value.registerEmail;
     this.user.password = this.registerForm.value.registerPassword;
 
-    this.userService.updateUser(this.user)
-      .pipe(first())
-      .subscribe(
-        data => {
-          this.alertService.success('Registration successful');
-          this.router.navigate(['/home']);
-        },
-        error => {
-          this.alertService.error(error);
-          this.loading = false;
-        });
+    // this.userService.updateUser(this.user)
+    //   .pipe(first())
+    //   .subscribe(
+    //     data => {
+    //       this.alertService.success('Registration successful');
+    //       this.router.navigate(['/home']);
+    //     },
+    //     error => {
+    //       this.alertService.error(error);
+    //       this.loading = false;
+    //     });
   }
 
 }

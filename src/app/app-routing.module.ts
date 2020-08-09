@@ -13,6 +13,7 @@ import {NewsEditorComponent} from './modules/admin/news-editor/news-editor.compo
 import {NewsTableComponent} from './modules/admin/news-table/news-table.component';
 import {LoginComponent} from './modules/admin/login/login.component';
 import {SignupComponent} from './modules/admin/signup/signup.component';
+import {MsalGuard} from '@azure/msal-angular';
 
 
 const routes: Routes = [
@@ -22,7 +23,10 @@ const routes: Routes = [
   },
   {
     path: 'login',
-    component: LoginComponent
+    component: LoginComponent,
+    canActivate: [
+      MsalGuard
+    ]
   },
   {
     path: 'register',
@@ -35,7 +39,10 @@ const routes: Routes = [
     children: [
       {
         path: 'home',
-        component: HomeComponent
+        component: HomeComponent,
+        canActivate: [
+          MsalGuard
+        ]
       },
       {
         path: 'news',
@@ -74,7 +81,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { useHash: false })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
